@@ -7,7 +7,5 @@ import lombok.*;
 public class Products {
     private long id;
     private String productName;
-    private double productCapacity;
     private double unitPrice;
-    private int evaporationRate;
 }
