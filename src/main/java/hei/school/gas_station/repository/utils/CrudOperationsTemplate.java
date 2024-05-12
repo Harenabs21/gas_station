@@ -5,9 +5,9 @@ public interface CrudOperationsTemplate<T> {
 
     List<T> findAll();
 
-    Integer save(T toSave);
+    T save(T toSave);
 
-    Integer update(T toUpdate);
+    T update(T toUpdate);
 
     T delete(T toDelete);
 }
