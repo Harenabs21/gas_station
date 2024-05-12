@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS movement_stock(
     id serial PRIMARY KEY,
     movement_type VARCHAR(50) not null,
     movement_quantity DOUBLE PRECISION  not null,
+    movement_amount DOUBLE PRECISION not null,
     movement_datetime timestamp not null default current_timestamp,
     id_station int REFERENCES stations(id),
     id_product int REFERENCES products(id)
