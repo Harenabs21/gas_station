@@ -1,9 +1,11 @@
 package hei.school.gas_station.utils;
-
-import org.springframework.stereotype.Component;
 import hei.school.gas_station.utils.lambdas.PreparedStatementSetter;
 import hei.school.gas_station.utils.lambdas.RowMapper;
+import lombok.AllArgsConstructor;
+
 import java.util.logging.Logger;
+
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,13 +13,11 @@ import java.util.Collections;
 import java.util.List;
 
 @Component
+@AllArgsConstructor
 public class QueryTemplate {
     private final Connection connection;
     private static final Logger LOGGER = Logger.getLogger(QueryTemplate.class.getName());
 
-    public QueryTemplate(Connection connection) {
-        this.connection = connection;
-    }
 
     public <T> List<T> executeQuery(String query, PreparedStatementSetter pss, RowMapper<T> rowMapper) {
         ArrayList<T> result = new ArrayList<>();
