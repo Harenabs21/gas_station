@@ -25,12 +25,12 @@ public class StockController {
     public Stock getSingleStock(@PathVariable long id){
         return stockService.findStockById(id);
     }
-    @GetMapping
+    @GetMapping("/first-stock")
     public Stock getFirstStockOfProduct(@RequestParam long stationId, @RequestParam long productId) {
         return stockService.findFirstStock(stationId,productId);
     }
 
-    @GetMapping
+    @GetMapping("/last-stock")
     public Stock getLastStockOfProduct(@RequestParam long stationId, @RequestParam long productId) {
         return stockService.findLatestStock(stationId,productId);
     }
