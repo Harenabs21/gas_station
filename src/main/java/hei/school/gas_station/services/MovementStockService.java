@@ -46,9 +46,15 @@ public class MovementStockService {
         double productsPrice = productsService.findSingleProductByHisId(toSave.getProduct().getId()).getUnitPrice();
         double maxQuantity = 200.0;
         if (toSave.getMovementType() == MovementStockType.ENTRY) {
+            if(latestStock != null){
             latestStock.setQuantity(latestStock.getQuantity() + toSave.getMovementQuantity());
             stockService.createNewStock(latestStock);
             toSave.setMovementAmount(0.0);
+            }
+            else{
+                toSave.setMovementDatetime(Instant.now());
+                return movementStockRepository.save(toSave);
+            }
         } else if (toSave.getMovementType() == MovementStockType.EXIT) {
             if (latestStock.getQuantity() > toSave.getMovementQuantity()) {
                 isAmountAndQuantityNull(toSave, productsPrice);
