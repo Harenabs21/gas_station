@@ -9,7 +9,6 @@ public class Stock  {
     private long id;
     private double quantity;
     private Instant stockDatetime;
-    private int evaporationRate;
     private Stations station;
     private Products product;
 }

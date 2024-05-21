@@ -10,6 +10,12 @@ CREATE TABLE IF NOT EXISTS products(
     unit_price DOUBLE PRECISION not null
 ); 
 
+CREATE TABLE IF NOT EXISTS evaporation_rate(
+    id serial primary key ,
+    rate_value int not null,
+    id_station int references stations(id),
+    id_product int references products(id)
+);
 
 CREATE TABLE IF NOT EXISTS movement_stock(
     id serial PRIMARY KEY,

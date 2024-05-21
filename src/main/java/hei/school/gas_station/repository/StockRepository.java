@@ -51,9 +51,8 @@ public class StockRepository implements CrudOperationsTemplate<Stock> {
                 ps -> {
                     ps.setTimestamp(1, Timestamp.from(toSave.getStockDatetime()));
                     ps.setDouble(2, toSave.getQuantity());
-                    ps.setInt(3, toSave.getEvaporationRate());
-                    ps.setLong(4, toSave.getStation().getId());
-                    ps.setLong(5, toSave.getProduct().getId());
+                    ps.setLong(3, toSave.getStation().getId());
+                    ps.setLong(4, toSave.getProduct().getId());
                 }) != 0 ? toSave : null;
     }
 
@@ -74,7 +73,6 @@ public class StockRepository implements CrudOperationsTemplate<Stock> {
                 rs.getLong(Columns.ID),
                 rs.getDouble(Columns.PRODUCT_CAPACITY),
                 instant,
-                rs.getInt(Columns.EVAPORATION_RATE),
                 stationRepo.findById(rs.getLong(Columns.ID_STATION)),
                 productRepo.findById(rs.getLong(Columns.ID_PRODUCT))
         );
