@@ -52,8 +52,10 @@ public class MovementStockService {
             toSave.setMovementAmount(0.0);
             }
             else{
-                toSave.setMovementDatetime(Instant.now());
-                return movementStockRepository.save(toSave);
+                Instant now = Instant.now();
+                Stock firstStock = new Stock(toSave.getMovementQuantity(),now,stationsService.findSingleStation(toSave.getStation().getId()),productsService.findSingleProductByHisId(toSave.getProduct().getId()));
+                stockService.createNewStock(firstStock);
+                toSave.setMovementAmount(0.0);
             }
         } else if (toSave.getMovementType() == MovementStockType.EXIT) {
             if (latestStock.getQuantity() > toSave.getMovementQuantity()) {

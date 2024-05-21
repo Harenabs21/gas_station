@@ -47,7 +47,7 @@ public class StockRepository implements CrudOperationsTemplate<Stock> {
 
     @Override
     public Stock save(Stock toSave) {
-        return qt.executeUpdate("insert into stock (stock_datetime,product_capacity,evaporation_rate,id_station,id_product) values (?,?,?,?,?)",
+        return qt.executeUpdate("insert into stock (stock_datetime,product_capacity,id_station,id_product) values (?,?,?,?)",
                 ps -> {
                     ps.setTimestamp(1, Timestamp.from(toSave.getStockDatetime()));
                     ps.setDouble(2, toSave.getQuantity());
