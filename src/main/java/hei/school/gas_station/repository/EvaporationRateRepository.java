@@ -5,11 +5,13 @@ import hei.school.gas_station.repository.utils.Columns;
 import hei.school.gas_station.repository.utils.CrudOperationsTemplate;
 import hei.school.gas_station.utils.QueryTemplate;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 @AllArgsConstructor
+@Repository
 public class EvaporationRateRepository implements CrudOperationsTemplate<EvaporationRate> {
     private final QueryTemplate qt;
     private final StationsRepository stationsRepository;
