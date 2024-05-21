@@ -30,7 +30,6 @@ CREATE TABLE IF NOT EXISTS movement_stock(
 CREATE TABLE IF NOT EXISTS stock(
     id serial PRIMARY KEY,
     product_capacity DOUBLE PRECISION  not null,
-    evaporation_rate int not null,
     stock_datetime timestamp not null default current_timestamp,
     id_station int REFERENCES stations(id),
     id_product int REFERENCES products(id)
